@@ -66,7 +66,7 @@ class ConfigController extends AdminController
 
         $form->text('title', __('Title'));
         $form->textarea('uri', __('Uri'));
-        $form->textarea('content', __('Content'));
+        $form->tinymce('content', __('Content'));
 
         return $form;
     }

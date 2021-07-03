@@ -395,6 +395,21 @@ return [
     |
     */
     'extensions' => [
-
+        'tinymce' => [
+            // Set to false if you want to disable this extension
+            'enable' => true,
+            // Editor configuration
+            'config' => [
+                'resize'=> false,
+            ],
+            "plugins" => [
+                    "advlist autolink lists image charmap preview hr ",
+                    "searchreplace wordcount visualblocks visualchars code",
+                    "insertdatetime nonbreaking table contextmenu directionality",
+                    "emoticons paste textcolor colorpicker textpattern link"
+                    ]
+        ]
     ],
+
+
 ];
