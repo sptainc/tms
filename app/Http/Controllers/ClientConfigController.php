@@ -7,9 +7,9 @@ use App\Config;
 
 class ClientConfigController extends Controller
 {
-    public function index()
+    public function index( $uri )
     {
-    	$content = Config::where("uri", "privacy-page")->first();
+    	$content = Config::where("uri", $uri)->first();
         return view("privacy", compact('content'));
     }
 }

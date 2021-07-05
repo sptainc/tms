@@ -17,4 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/privacy', 'ClientConfigController@index');
+Route::get('/{uri}', 'ClientConfigController@index');
