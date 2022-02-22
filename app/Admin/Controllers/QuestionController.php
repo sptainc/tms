@@ -2,7 +2,7 @@
 
 namespace App\Admin\Controllers;
 
-use App\Config;
+use App\Question;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -24,7 +24,7 @@ class QuestionController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new Config());
+        $grid = new Grid(new Question());
 
         $grid->column('id', __('Id'));
         $grid->column('title', __('Title'));
@@ -42,7 +42,7 @@ class QuestionController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(Config::findOrFail($id));
+        $show = new Show(Question::findOrFail($id));
 
         $show->field('id', __('Id'));
         $show->field('title', __('Title'));
@@ -60,7 +60,7 @@ class QuestionController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new Config());
+        $form = new Form(new Question());
 
         $form->text('title', __('Title'));
         $form->tinymce('content', __('Content'));
