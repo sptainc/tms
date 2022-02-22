@@ -20,5 +20,5 @@ use Illuminate\Support\Facades\Route;
 Route::group([
     'namespace' => '\App\Admin\Apis'
 ], function () {
-    Route::get('email-report', 'QuestionApi@getAll');
+    Route::get('questions', 'QuestionApi@getAll');
 });

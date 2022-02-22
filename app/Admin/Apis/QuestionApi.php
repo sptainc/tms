@@ -1,8 +1,8 @@
 <?php
-
 namespace App\Admin\Apis;
 
 use App\Question;
+use Illuminate\Http\Request;
 
 class QuestionApi
 {
