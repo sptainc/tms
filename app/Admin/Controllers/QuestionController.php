@@ -28,6 +28,7 @@ class QuestionController extends AdminController
 
         $grid->column('id', __('Id'));
         $grid->column('title', __('Title'));
+        $grid->column('uri', __('Uri'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
@@ -46,6 +47,7 @@ class QuestionController extends AdminController
 
         $show->field('id', __('Id'));
         $show->field('title', __('Title'));
+        $grid->column('uri', __('Uri'));
         $show->field('content', __('Content'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
@@ -63,6 +65,7 @@ class QuestionController extends AdminController
         $form = new Form(new Question());
 
         $form->text('title', __('Title'));
+        $grid->column('uri', __('Uri'));
         $form->tinymce('content', __('Content'));
 
         return $form;
