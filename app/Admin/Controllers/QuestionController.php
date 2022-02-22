@@ -29,6 +29,12 @@ class QuestionController extends AdminController
         $grid->column('id', __('Id'));
         $grid->column('title', __('Title'));
         $grid->column('uri', __('Uri'));
+        $grid->column('parent')->display(function () {
+            $questParent = Question::find($this->parent_id);
+            if ( $questParent )
+                return $questParent->title;
+            return "";
+        });
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
