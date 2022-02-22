@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 
 class QuestionApi
 {
-	public function getAll(Request $request) 
+	public function getAll(Request $req) 
 	{
-		$q = $request->get('q');
-
-    	return Question::where('title', 'like', "%$q%")->paginate(null, ['id', 'title as text']);
+		if ( $req->filled("q") ) {
+			$q = $req->get('q');
+    		return Question::where('title', 'like', "%$q%")->paginate(null, ['id', 'title as text']);
+		}
+    		return Question::paginate(null, ['id', 'title as text']);
 	}
 }
