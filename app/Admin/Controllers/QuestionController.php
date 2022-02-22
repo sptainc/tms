@@ -68,6 +68,14 @@ class QuestionController extends AdminController
         $form->text('uri', __('Uri'));
         $form->tinymce('content', __('Content'));
 
+        $form->select('parent_id')->options(function ($id) {
+            $question = Question::find($id);
+
+            if ($question) {
+                return [$question->id => $question->title];
+            }
+        })->ajax('/api/questions');
+
         return $form;
     }
 }
