@@ -25,7 +25,7 @@ class QuestionController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new Question());
-
+        $grid->model()->orderBy('created_at', 'desc');
         $grid->column('id', __('Id'));
         $grid->column('title', __('Title'));
         $grid->column('uri', __('Uri'));
