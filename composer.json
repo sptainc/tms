@@ -9,20 +9,13 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5|^8.0",
-<<<<<<< HEAD
-=======
         "encore/laravel-admin": "^1.8",
->>>>>>> 680c98c99102b3f16eef6e09116ca23c7687b142
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^6.3.1|^7.0.1",
         "laravel/framework": "^7.29",
-<<<<<<< HEAD
-        "laravel/tinker": "^2.5"
-=======
         "laravel/tinker": "^2.5",
         "super-eggs/laravel-admin-tinymce": "^0.0.2"
->>>>>>> 680c98c99102b3f16eef6e09116ca23c7687b142
     },
     "require-dev": {
         "facade/ignition": "^2.0",
