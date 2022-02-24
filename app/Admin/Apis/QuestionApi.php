@@ -12,16 +12,16 @@ class QuestionApi
 		return Question::where('title', 'like', "%$q%")->paginate(null, ['id', 'title as text']);
 	}
 
-	public function getByUri ( $uri, Request $req )
+	public function getByUri ( Request $req )
 	{
 		$parent = Question::select('id')->where([
-			['uri', 'like', '%' . $uri . '%'],
+			['uri', 'like', '%' . $req->get('q') . '%'],
 			['parent_id', null]
 		])->first();
 		if ( $parent )
 			$questions = Question::where('parent_id', $parent->id)->orderBy('updated_at', 'desc')->get();
 		else 
-			$questions = Question::where('uri', 'like', '%' . $uri . '%')->orderBy('updated_at', 'desc')->get();
+			$questions = Question::where('uri', 'like', '%' . $req->get('q') . '%')->orderBy('updated_at', 'desc')->get();
 
 		return response()->json([
                 'success' => true,
