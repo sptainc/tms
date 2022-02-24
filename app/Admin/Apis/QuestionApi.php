@@ -18,6 +18,14 @@ class QuestionApi
 			['uri', 'like', '%' . $uri . '%'],
 			['parent_id', null]
 		])->first();
-		return Question::where('parent_id', $parent->id)->orderBy('updated_at', 'desc')->get();
+		if ( $parent )
+			$questions = Question::where('parent_id', $parent->id)->orderBy('updated_at', 'desc')->get();
+		else 
+			$questions = Question::where('uri', 'like', '%' . $uri . '%')->orderBy('updated_at', 'desc')->get();
+
+		return response()->json([
+                'success' => true,
+                'questions' => $questions
+            ], 200 );
 	}
 }
