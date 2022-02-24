@@ -15,7 +15,7 @@ class QuestionApi
 	public function getByUri ( $uri, Request $req )
 	{
 		$parent = Question::select('id')->where([
-			['uri', 'like', '%$uri%'],
+			['uri', 'like', '%' . $uri . '%'],
 			['parent_id', null]
 		])->first();
 		return Question::where('parent_id', $parent->id)->orderBy('updated_at', 'desc')->get();
