@@ -21,4 +21,5 @@ Route::group([
     'namespace' => '\App\Admin\Apis'
 ], function () {
     Route::get('questions', 'QuestionApi@getAll');
+    Route::get('questions/page/{uri}', 'QuestionApi@getByUri');
 });
