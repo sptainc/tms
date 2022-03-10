@@ -72,7 +72,7 @@ class UserGuideController extends AdminController
 
         $form->text('title', __('Title'));
         $form->text('uri', __('Uri'));
-        $form->markdown('content', __('Content'));
+        $form->simplemde('content', __('Content'));
 
         $form->select('parent_id')->options(function ($id) {
             $question = UserGuide::find($id);
