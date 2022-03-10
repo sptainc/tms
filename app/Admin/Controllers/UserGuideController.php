@@ -2,7 +2,7 @@
 
 namespace App\Admin\Controllers;
 
-use App\Question;
+use App\UserGuide;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -24,13 +24,13 @@ class UserGuideController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new Question());
+        $grid = new Grid(new UserGuide());
         $grid->model()->orderBy('created_at', 'desc');
         $grid->column('id', __('Id'));
         $grid->column('title', __('Title'));
         $grid->column('uri', __('Uri'));
         $grid->column('parent')->display(function () {
-            $questParent = Question::find($this->parent_id);
+            $questParent = UserGuide::find($this->parent_id);
             if ( $questParent )
                 return $questParent->title;
             return "";
@@ -49,7 +49,7 @@ class UserGuideController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(Question::findOrFail($id));
+        $show = new Show(UserGuide::findOrFail($id));
 
         $show->field('id', __('Id'));
         $show->field('title', __('Title'));
@@ -68,14 +68,14 @@ class UserGuideController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new Question());
+        $form = new Form(new UserGuide());
 
         $form->text('title', __('Title'));
         $form->text('uri', __('Uri'));
         $form->tinymce('content', __('Content'));
 
         $form->select('parent_id')->options(function ($id) {
-            $question = Question::find($id);
+            $question = UserGuide::find($id);
 
             if ($question) {
                 return [$question->id => $question->title];
