@@ -32,9 +32,7 @@
     <div class="container-fluid">
         <main class="main section-color-primary">
             <div class="container">
-                <x-markdown>
                 {!! isset($content) && $content != null ? $content->content : "Không có dữ liệu" !!}
-                </x-markdown>
             </div>
         </main>
     </div>
