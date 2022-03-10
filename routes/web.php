@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('/policy/{uri}', 'ClientConfigController@index');
 Route::get('/user-guide/{uri}', 'UserGuideController@index');
