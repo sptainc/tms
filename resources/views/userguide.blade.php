@@ -31,6 +31,16 @@
           width: 100%;
         }
 
+        h2 {
+            margin-bottom: 1em;
+            margin-top: 1em;
+            text-align: center;
+        }
+
+        h5 {
+            text-align: center;
+        }
+
     </style>
 </head>
 
