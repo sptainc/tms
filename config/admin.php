@@ -410,6 +410,19 @@ return [
                 "toolbar" => "undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | forecolor backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media pageembed template link anchor codesample | a11ycheck ltr rtl | showcomments addcomment",
             ],
             
+        ],
+        'simplemde' => [
+        
+            // Set to false if you want to disable this extension
+            'enable' => true,
+            
+            // If you want to set an alias for the calling method
+            //'alias' => 'markdown',
+            
+            // Editor configuration
+            'config' => [
+                
+            ]
         ]
     ],
 

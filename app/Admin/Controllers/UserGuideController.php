@@ -72,7 +72,7 @@ class UserGuideController extends AdminController
 
         $form->text('title', __('Title'));
         $form->text('uri', __('Uri'));
-        $form->tinymce('content', __('Content'));
+        $form->markdown('content', __('Content'));
 
         $form->select('parent_id')->options(function ($id) {
             $question = UserGuide::find($id);
@@ -80,7 +80,7 @@ class UserGuideController extends AdminController
             if ($question) {
                 return [$question->id => $question->title];
             }
-        })->ajax('/api/questions');
+        })->ajax('/api/user-guides');
 
         return $form;
     }
