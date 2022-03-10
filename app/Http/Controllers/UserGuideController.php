@@ -12,7 +12,7 @@ class UserGuideController extends Controller
     public function index( Request $req )
     {
     	$content = UserGuide::where("uri", $req->uri)->first();
-        $content = Markdown::convertToHtml($content); 
+        $content->content = Markdown::convertToHtml($content->content); 
         return view("userguide", compact('content'));
     }
 }
