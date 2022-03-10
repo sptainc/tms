@@ -22,4 +22,6 @@ Route::group([
 ], function () {
     Route::get('questions', 'QuestionApi@getAll');
     Route::get('questions/page', 'QuestionApi@getByUri');
+    Route::get('user-guides', 'UserGuideApi@getAll');
+    Route::get('user-guides/page', 'UserGuideApi@getByUri');
 });
