@@ -31,7 +31,7 @@ class QuestionApi
 		return response()->json([
                 'success' => true,
                 'questions' => $questions,
-                'user-guide' => $userGuide,
+                'user_guide' => $userGuide,
                 'version' => "v1"
             ], 200 );
 	}
