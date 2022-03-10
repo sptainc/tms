@@ -25,6 +25,13 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/responsive.css">
+    <style type="text/css">
+                
+        img { 
+          width: 100%;
+        }
+
+    </style>
 </head>
 
 <body>	
