@@ -19,14 +19,19 @@ class QuestionApi
 			['uri', 'like', '%' . $req->get('q') . '%'],
 			['parent_id', null]
 		])->first();
-		if ( $parent ) {
+		$parentUserGuide = UserGuide::select('id')->where([
+			['uri', 'like', '%' . $req->get('q') . '%'],
+			['parent_id', null]
+		])->first();
+		if ( $parent )
 			$questions = Question::where('parent_id', $parent->id)->orderBy('updated_at', 'desc')->get();
-			$userGuide = UserGuide::where('parent_id', $parent->id)->orderBy('updated_at', 'desc')->get();
-		}
-		else {
+		else 
 			$questions = Question::where('uri', 'like', '%' . $req->get('q') . '%')->orderBy('updated_at', 'desc')->get();
+
+		if ( $parentUserGuide )
+			$userGuide = UserGuide::where('parent_id', $parent->id)->orderBy('updated_at', 'desc')->get();
+		else 
 			$userGuide = UserGuide::where('uri', 'like', '%' . $req->get('q') . '%')->orderBy('updated_at', 'desc')->get();
-		}
 
 		return response()->json([
                 'success' => true,
