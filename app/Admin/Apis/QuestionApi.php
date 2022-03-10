@@ -23,6 +23,8 @@ class QuestionApi
 			['uri', 'like', '%' . $req->get('q') . '%'],
 			['parent_id', null]
 		])->first();
+		\Log::info('parentUserGuide');
+		\Log::info($parentUserGuide);
 		if ( $parent )
 			$questions = Question::where('parent_id', $parent->id)->orderBy('updated_at', 'desc')->get();
 		else 
@@ -32,6 +34,8 @@ class QuestionApi
 			$userGuide = UserGuide::where('parent_id', $parent->id)->orderBy('updated_at', 'desc')->get();
 		else 
 			$userGuide = UserGuide::where('uri', 'like', '%' . $req->get('q') . '%')->orderBy('updated_at', 'desc')->get();
+
+		\Log::info($userGuide);
 
 		return response()->json([
                 'success' => true,
