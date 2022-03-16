@@ -33,7 +33,7 @@ class QuestionApi
 		if ( $parentUserGuide )
 			$userGuide = UserGuide::where('uri', 'like', '%' . $req->get('q') . '%')->orderBy('updated_at', 'desc')->get();
 		else 
-			$userGuide = UserGuide::where('parent_id', $parent->id)->orderBy('updated_at', 'desc')->get();
+			$userGuide = UserGuide::where('parent_id', $parentUserGuide->id)->orderBy('updated_at', 'desc')->get();
 
 		\Log::info($userGuide);
 
