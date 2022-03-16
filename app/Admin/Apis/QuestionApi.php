@@ -23,25 +23,37 @@ class QuestionApi
 			['uri', 'like', '%' . $req->get('q') . '%'],
 			['parent_id', null]
 		])->first();
-		\Log::info('parentUserGuide');
-		\Log::info($parentUserGuide);
-		if ( $parent )
-			$questions = Question::where('parent_id', $parent->id)->orderBy('updated_at', 'desc')->get();
-		else 
-			$questions = Question::where('uri', 'like', '%' . $req->get('q') . '%')->orderBy('updated_at', 'desc')->get();
 
-		if ( $parentUserGuide )
-			$userGuide = UserGuide::where('uri', 'like', '%' . $req->get('q') . '%')->orderBy('updated_at', 'desc')->get();
-		else 
-			$userGuide = UserGuide::where('parent_id', $parentUserGuide->id)->orderBy('updated_at', 'desc')->get();
+		$questions = [];
+		if ( $parent ) {
+			$childQuest = Question::where('parent_id', $parent->id)->orderBy('updated_at', 'desc')->get();
+			if ( cound($childQuest) > 0 )
+				$questions = $childQuest;
+			else 
+				$questions = Question::where('uri', 'like', '%' . $req->get('q') . '%')->orderBy('updated_at', 'desc')->get();
+		}
 
-		\Log::info($userGuide);
+		$userGuide = [];
+		if ( $parentUserGuide ) {
+			$childUserGuide = UserGuide::where('parent_id', $parentUserGuide->id)->orderBy('updated_at', 'desc')->get();
+			if ( cound($childUserGuide) > 0 )
+				$questions = $childUserGuide;
+			else 
+				$userGuide = UserGuide::where('uri', 'like', '%' . $req->get('q') . '%')->orderBy('updated_at', 'desc')->get();
+		}
+
+		if ( $parentUserGuide || $parent ) {
+			return response()->json([
+	                'success' => true,
+	                'questions' => $questions,
+	                'user_guide' => $userGuide,
+	                'version' => "v1"
+	            ], 200 );
+		}
 
 		return response()->json([
-                'success' => true,
-                'questions' => $questions,
-                'user_guide' => $userGuide,
-                'version' => "v1"
-            ], 200 );
+	                'success' => false,
+	                'version' => "v1"
+	            ], 200 );
 	}
 }
