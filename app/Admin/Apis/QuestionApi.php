@@ -25,6 +25,8 @@ class QuestionApi
 		])->first();
 
 		$questions = [];
+		$userGuide = [];
+		
 		if ( $parent ) {
 			$childQuest = Question::where('parent_id', $parent->id)->orderBy('updated_at', 'desc')->get();
 			if ( cound($childQuest) > 0 )
@@ -33,7 +35,6 @@ class QuestionApi
 				$questions = Question::where('uri', 'like', '%' . $req->get('q') . '%')->orderBy('updated_at', 'desc')->get();
 		}
 
-		$userGuide = [];
 		if ( $parentUserGuide ) {
 			$childUserGuide = UserGuide::where('parent_id', $parentUserGuide->id)->orderBy('updated_at', 'desc')->get();
 			if ( cound($childUserGuide) > 0 )
