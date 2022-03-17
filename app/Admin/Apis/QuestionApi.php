@@ -29,7 +29,7 @@ class QuestionApi
 		
 		if ( $parent ) {
 			$childQuest = Question::where('parent_id', $parent->id)->orderBy('updated_at', 'desc')->get();
-			if ( cound($childQuest) > 0 )
+			if ( count($childQuest) > 0 )
 				$questions = $childQuest;
 			else 
 				$questions = Question::where('uri', 'like', '%' . $req->get('q') . '%')->orderBy('updated_at', 'desc')->get();
@@ -37,7 +37,7 @@ class QuestionApi
 
 		if ( $parentUserGuide ) {
 			$childUserGuide = UserGuide::where('parent_id', $parentUserGuide->id)->orderBy('updated_at', 'desc')->get();
-			if ( cound($childUserGuide) > 0 )
+			if ( count($childUserGuide) > 0 )
 				$questions = $childUserGuide;
 			else 
 				$userGuide = UserGuide::where('uri', 'like', '%' . $req->get('q') . '%')->orderBy('updated_at', 'desc')->get();
